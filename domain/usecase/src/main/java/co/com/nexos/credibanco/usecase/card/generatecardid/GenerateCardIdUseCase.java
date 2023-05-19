@@ -12,7 +12,7 @@ import java.util.UUID;
 public class GenerateCardIdUseCase {
     private final CardRepository cardRepository;
 
-    public Mono<Card> generateCardId(Product product, String typeOfCard){
-        return cardRepository.createCard(product,typeOfCard);
+    public Mono<Card> generateCardId(String productId, String typeOfCard){
+        return cardRepository.createCard(productId,typeOfCard);
     }
 }

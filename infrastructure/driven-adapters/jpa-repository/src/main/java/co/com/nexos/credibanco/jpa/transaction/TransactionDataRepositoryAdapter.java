@@ -29,7 +29,7 @@ implements TransactionRepository
     }
 
     @Override
-    public Mono<Transaction> doPurchase(Transaction transaction) {
+    public Mono<Transaction> doPurchase(String cardId,Integer price) {
         return null;
     }
 

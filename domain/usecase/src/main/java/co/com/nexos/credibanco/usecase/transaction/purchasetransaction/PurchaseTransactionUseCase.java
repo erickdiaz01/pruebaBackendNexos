@@ -10,7 +10,7 @@ public class PurchaseTransactionUseCase {
 
     private TransactionRepository transactionRepository;
 
-    public Mono<Transaction> doTransaction(Transaction transaction){
-        return  transactionRepository.doPurchase(transaction);
+    public Mono<Transaction> doTransaction(String cardId,Integer price){
+        return  transactionRepository.doPurchase(cardId,price);
     }
 }

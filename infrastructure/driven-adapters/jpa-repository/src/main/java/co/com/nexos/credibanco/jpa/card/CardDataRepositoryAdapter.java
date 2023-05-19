@@ -31,7 +31,7 @@ public class CardDataRepositoryAdapter extends AdapterOperations<Card/* change f
     }
 
     @Override
-    public Mono<Card> createCard(Product product, String typeOfCard) {
+    public Mono<Card> createCard(String productId, String typeOfCard) {
         return null;
     }
 
