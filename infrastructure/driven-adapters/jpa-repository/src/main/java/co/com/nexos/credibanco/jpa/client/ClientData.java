@@ -1,14 +1,14 @@
 package co.com.nexos.credibanco.jpa.client;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import co.com.nexos.credibanco.model.product.Product;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -23,6 +23,7 @@ public class ClientData {
 
     @Column(name = "full_name", nullable = false)
     private String fullName;
+
 
 
 }

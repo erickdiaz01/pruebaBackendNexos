@@ -1,15 +1,17 @@
 package co.com.nexos.credibanco.jpa.product;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import co.com.nexos.credibanco.jpa.card.CardData;
+import co.com.nexos.credibanco.jpa.client.ClientData;
+import co.com.nexos.credibanco.model.client.Client;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.LocalDate;
 
 @Data
 @Entity
@@ -21,16 +23,13 @@ public class ProductData {
     @Id
     @Column(name = "product_id", nullable = false)
     private String productId;
-    @Column(name = "document_client", nullable = false)
-    private String documentClient;
-    @Column(name = "titular_name", nullable = false)
-    private String titularName;
-    @Column(name = "expiration_date", nullable = false)
-    private LocalDate expirationDate;
-    @Column(name = "is_activated", nullable = false)
-    private Boolean isActivated;
-    @Column(name = "is_blocked", nullable = false)
-    private Boolean isBlocked;
-    @Column(name = "balance", nullable = false)
-    private Integer balance;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "document_client", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private ClientData client;
+
+    @OneToOne(mappedBy = "productData", cascade = CascadeType.ALL)
+    private CardData cardData;
 }

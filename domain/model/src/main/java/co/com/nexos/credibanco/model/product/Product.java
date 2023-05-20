@@ -1,7 +1,9 @@
 package co.com.nexos.credibanco.model.product;
+import co.com.nexos.credibanco.model.card.Card;
+import co.com.nexos.credibanco.model.client.Client;
 import lombok.*;
 
-import java.time.LocalDate;
+
 
 @Getter
 @Setter
@@ -10,10 +12,6 @@ import java.time.LocalDate;
 @Builder(toBuilder = true)
 public class Product {
     private String productId;
-    private String documentClient;
-    private String titularName;
-    private LocalDate expirationDate;
-    private Boolean isActivated;
-    private Boolean isBlocked;
-    private Integer balance;
+    private Client client;
+    private Card card;
 }

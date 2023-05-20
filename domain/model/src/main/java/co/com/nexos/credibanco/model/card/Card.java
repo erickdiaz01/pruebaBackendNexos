@@ -2,18 +2,23 @@ package co.com.nexos.credibanco.model.card;
 import co.com.nexos.credibanco.model.product.Product;
 import lombok.*;
 
+import java.time.LocalDate;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Card extends Product {
-    enum typeOfCard {
-        DEBIT,
-        CREDIT
-    }
+@Builder(toBuilder = true)
+public class Card  {
+
     private String cardId;
-    private typeOfCard type;
+    private String type;
+    private Product product;
+    private String titularName;
+    private LocalDate expirationDate;
+    private Boolean isActivated;
+    private Boolean isBlocked;
+    private Integer balance;
 
 }
