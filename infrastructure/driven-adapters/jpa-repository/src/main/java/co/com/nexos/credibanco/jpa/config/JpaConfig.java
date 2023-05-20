@@ -48,7 +48,6 @@ public class JpaConfig {
 
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", dialect);
-        properties.setProperty("hibernate.hbm2ddl.auto", "update"); // TODO: remove this for non auto create schema
         em.setJpaProperties(properties);
 
         return em;

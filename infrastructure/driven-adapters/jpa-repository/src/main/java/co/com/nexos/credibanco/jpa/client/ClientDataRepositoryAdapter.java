@@ -15,7 +15,7 @@ public class ClientDataRepositoryAdapter extends AdapterOperations<Client/* chan
 
     public ClientDataRepositoryAdapter(ClientDataRepository repository, ObjectMapper mapper) {
 
-        super(repository, mapper, d -> mapper.mapBuilder(d, Client.ClientBuilder.class/* change for domain model */).build());
+        super(repository, mapper, d -> mapper.map(d, Client.class/* change for domain model */));
     }
 
     @Override

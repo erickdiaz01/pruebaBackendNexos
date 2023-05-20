@@ -8,7 +8,6 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(toBuilder = true)
 public class Card extends Product {
     enum typeOfCard {
         DEBIT,

@@ -15,7 +15,7 @@ public class ProductDataRepositoryAdapter extends AdapterOperations<Product/* ch
 
     public ProductDataRepositoryAdapter(ProductDataRepository repository, ObjectMapper mapper) {
 
-        super(repository, mapper, d -> mapper.mapBuilder(d, Product.ProductBuilder.class/* change for domain model */).build());
+        super(repository, mapper, d -> mapper.map(d, Product.class/* change for domain model */));
     }
 
     @Override

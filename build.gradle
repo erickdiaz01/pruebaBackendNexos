@@ -13,8 +13,14 @@ plugins {
 	id 'org.springframework.boot' version "${springBootVersion}"
 	id 'org.sonarqube' version "${sonarVersion}"
 	id 'jacoco'
+    id 'java'
 }
 
+apply plugin: 'io.spring.dependency-management'
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.postgresql:postgresql:42.3.1'
+}
 sonarqube {
     def modules = subprojects.projectDir.collect { "${it.toString().replace(project.projectDir.toString() + "/", "")}" }
     properties {

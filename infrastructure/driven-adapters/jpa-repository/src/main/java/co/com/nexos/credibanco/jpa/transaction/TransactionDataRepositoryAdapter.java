@@ -15,7 +15,7 @@ implements TransactionRepository
 
     public TransactionDataRepositoryAdapter(TransactionDataRepository repository, ObjectMapper mapper) {
 
-        super(repository, mapper, d -> mapper.mapBuilder(d, Transaction.TransactionBuilder.class/* change for domain model */).build());
+        super(repository, mapper, d -> mapper.map(d, Transaction.class/* change for domain model */));
     }
 
     @Override

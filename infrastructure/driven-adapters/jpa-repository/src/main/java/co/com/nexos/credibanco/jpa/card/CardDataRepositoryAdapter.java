@@ -17,7 +17,7 @@ public class CardDataRepositoryAdapter extends AdapterOperations<Card/* change f
 
     public CardDataRepositoryAdapter(CardDataRepository repository, ObjectMapper mapper) {
 
-        super(repository, mapper, d -> mapper.mapBuilder(d, Card.CardBuilder.class/* change for domain model */).build());
+        super(repository, mapper, d -> mapper.map(d, Card.class/* change for domain model */));
     }
 
     @Override
