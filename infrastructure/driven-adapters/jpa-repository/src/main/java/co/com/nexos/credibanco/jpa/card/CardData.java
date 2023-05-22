@@ -25,20 +25,17 @@ public class CardData {
     @Id
     @Column(name = "card_id", nullable = false)
     private String cardId;
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private ProductData productData;
+
+  @Column(name = "product_id")
+    private Integer productId;
 
     @Column(name = "type_of_card")
-    @Size(max = 10, message = "Limite máximo de 50 caracteres")
     @Pattern(regexp = "[^0-9]*", message = "El campo no debe contener números")
     private String typeOfCard;
 
 
     @Column(name = "titular_name", nullable = false)
-    @Size(max = 50, message = "Limite máximo de 50 caracteres")
+    @Size(max = 100, message = "Limite máximo de 100 caracteres")
     @Pattern(regexp = "[^0-9]*", message = "El campo no debe contener números")
     private String titularName;
 

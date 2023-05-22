@@ -14,7 +14,7 @@ public class Card  {
 
     private String cardId;
     private String type;
-    private Product product;
+    private Integer productId;
     private String titularName;
     private LocalDate expirationDate;
     private Boolean isActivated;
@@ -22,13 +22,13 @@ public class Card  {
     private Integer balance;
 
     public void activateCard(){
-        if(!this.isActivated&&!this.isBlocked){
+        if(this.isActivated==false&&this.isBlocked==false){
             this.setIsActivated(true);
         }
 
     }
       public void blockCard(){
-        if(this.isActivated&&!this.isBlocked){
+        if(this.isActivated==true&&this.isBlocked==false){
             this.setIsBlocked(true);
             this.setIsActivated(false);
         }

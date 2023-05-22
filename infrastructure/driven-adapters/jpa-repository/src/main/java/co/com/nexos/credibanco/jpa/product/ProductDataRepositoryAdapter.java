@@ -1,6 +1,7 @@
 package co.com.nexos.credibanco.jpa.product;
 
 import co.com.nexos.credibanco.jpa.client.ClientData;
+import co.com.nexos.credibanco.jpa.client.ClientDataRepository;
 import co.com.nexos.credibanco.jpa.converters.ConverterClient;
 import co.com.nexos.credibanco.jpa.converters.ConverterProduct;
 import co.com.nexos.credibanco.jpa.helper.AdapterOperations;
@@ -18,15 +19,16 @@ import java.util.List;
 public class ProductDataRepositoryAdapter extends AdapterOperations<Product/* change for domain model */, ProductData/* change for adapter model */, String, ProductDataRepository>
  implements ProductRepository
 {
-
-    public ProductDataRepositoryAdapter(ProductDataRepository repository, ObjectMapper mapper) {
+private final ClientDataRepository clientDataRepository;
+    public ProductDataRepositoryAdapter(ProductDataRepository repository, ObjectMapper mapper, ClientDataRepository clientDataRepository) {
 
         super(repository, mapper, d -> mapper.mapBuilder(d, Product.ProductBuilder.class).build());
+        this.clientDataRepository = clientDataRepository;
     }
 
     @Override
-    public Mono<Product> findProductById(String productId) {
-        return repository.findById(productId)
+    public Mono<Product> findProductById(Long productId) {
+        return repository.findById(productId.toString())
                 .map(productData ->   Mono.just(ConverterProduct.convertProductDataToProduct(productData)))
                 .orElseThrow(()->new ResourceAccessException("No fue posible encontrar el producto"));
 
@@ -42,9 +44,14 @@ public class ProductDataRepositoryAdapter extends AdapterOperations<Product/* ch
 
     @Override
     public Mono<Product> createProduct(Product product) {
-        if(repository.findById(product.getProductId()).isPresent()){
-            throw new IllegalArgumentException("Producto ya creado");
+
+        if(product.getProductId()!=null){
+            if(repository.findById(product.getProductId().toString()).isPresent()){
+                throw new IllegalArgumentException("Producto ya creado");
+            }
         }
+        ClientData clientData = clientDataRepository.findById(product.getClient().getClientId()).orElseThrow(()->new ResourceAccessException("No existe el cliente en el sistema"));
+        product.setClient(ConverterClient.convertClientDataToClient(clientData));
         ProductData newProduct = repository.save(ConverterProduct.convertProductToProductData(product));
         return Mono.just(ConverterProduct.convertProductDataToProduct(newProduct));
     }

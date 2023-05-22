@@ -23,7 +23,7 @@ public class ClientData {
     @Column(name = "client_id", nullable = false)
     private String clientId;
 
-    @Size(max = 50, message = "Limite máximo de 50 caracteres")
+    @Size(max = 100, message = "Limite máximo de 100 caracteres")
     @Pattern(regexp = "[^0-9]*", message = "El campo no debe contener números")
     @Column(name = "full_name", nullable = false)
     private String fullName;

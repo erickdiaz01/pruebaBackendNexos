@@ -1,6 +1,5 @@
 package co.com.nexos.credibanco.jpa.transaction;
 
-import co.com.nexos.credibanco.jpa.card.CardData;
 import co.com.nexos.credibanco.jpa.card.CardDataRepository;
 import co.com.nexos.credibanco.jpa.converters.ConverterCard;
 import co.com.nexos.credibanco.jpa.converters.ConverterTransaction;
@@ -16,7 +15,6 @@ import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class TransactionDataRepositoryAdapter extends AdapterOperations<Transaction, TransactionData, String, TransactionDataRepository>
@@ -65,9 +63,9 @@ private final CardDataRepository cardDataRepository;
     }
 
     @Override
-    public Mono<Transaction> reverseTransaction(String cardId, String transactionId) {
+    public Mono<Transaction> reverseTransaction(String cardId, Integer transactionId) {
         Card card = cardDataRepository.findById(cardId).map(ConverterCard::convertCardDataToCard).orElseThrow(()-> new ResourceAccessException("No se encontró la tarjeta de la compra"));
-        Transaction transaction = repository.findById(transactionId).map(ConverterTransaction::convertTransactionDataToTransaction).orElseThrow(()->new ResourceAccessException("No se encontró la compra"));
+        Transaction transaction = repository.findById(transactionId.toString()).map(ConverterTransaction::convertTransactionDataToTransaction).orElseThrow(()->new ResourceAccessException("No se encontró la compra"));
         transaction.invalidTransaction();
         card.setBalance(card.getBalance()+ transaction.getPrice());
         transaction.setCard(card);

@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class Product {
-    private String productId;
+    private Integer productId;
     private Client client;
-    private Card card;
+    private String cardId;
 }

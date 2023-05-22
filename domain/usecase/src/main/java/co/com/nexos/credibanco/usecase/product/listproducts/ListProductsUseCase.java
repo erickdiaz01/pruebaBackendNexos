@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 
 @RequiredArgsConstructor
 public class ListProductsUseCase {
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public Flux<Product> listProducts(){
         return productRepository.listProducts();

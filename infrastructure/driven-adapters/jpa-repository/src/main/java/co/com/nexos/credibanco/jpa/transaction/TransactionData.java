@@ -22,10 +22,12 @@ import java.time.LocalDate;
 public class TransactionData {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "transactions_SEQ")
+    @SequenceGenerator(name = "transactions_SEQ", sequenceName = "transactions_seq", allocationSize = 1)
     @Column(name = "transaction_id", nullable = false)
-    private String transactionId;
+    private Integer transactionId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "card_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore

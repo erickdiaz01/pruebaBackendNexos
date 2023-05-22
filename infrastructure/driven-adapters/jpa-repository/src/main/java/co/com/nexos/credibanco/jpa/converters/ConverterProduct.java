@@ -15,16 +15,12 @@ public class ConverterProduct {
     }
 
     public static Product convertProductDataToProduct(ProductData productData) {
-        Card card;
-        if(productData.getCardData()==null){
-            card = Card.builder().build();
-        }else {
-            card = ConverterCard.convertCardDataToCard(productData.getCardData());
-        }
+
+
         return productData!= null ? Product.builder()
                 .productId(productData.getProductId())
                 .client(ConverterClient.convertClientDataToClient(productData.getClient()))
-                 .card(card)
+                 .cardId(productData.getCardId())
                 .build() : Product.builder().build();
 
     }
@@ -35,15 +31,11 @@ public class ConverterProduct {
 
     public static ProductData convertProductToProductData(Product product) {
         ProductData productData = new ProductData();
-        CardData cardData;
-        if(product.getCard()==null){
-            cardData = CardData.builder().build();
-        }else {
-            cardData = ConverterCard.convertCardToCardData(product.getCard());
-        }
+
+
         if(product!=null){
             productData.setProductId(product.getProductId());
-           productData.setCardData(cardData);
+           productData.setCardId(product.getCardId());
             productData.setClient(ConverterClient.convertClientToClientData(product.getClient()));
         }
         return productData;

@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 public class ConsultTransactionUseCase {
-    private TransactionRepository transactionRepository;
+    private final TransactionRepository transactionRepository;
 
     public Mono<Transaction> consultTransaction(String transactionId){
         return  transactionRepository.findTransactionById(transactionId);

@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class CreateProductUseCase {
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public Mono<Product> createProduct(Product product){
         return productRepository.createProduct(product);

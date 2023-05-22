@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 public class ListClientsUseCase {
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     public Flux<Client> listClients(){
         return clientRepository.listClients();

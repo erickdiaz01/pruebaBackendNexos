@@ -7,9 +7,9 @@ import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 public class ReverseTransactionUseCase {
-    private TransactionRepository transactionRepository;
+    private final TransactionRepository transactionRepository;
 
-    public Mono<Transaction> reverserTransaction(String transactionId, String cardId){
-        return  transactionRepository.reverseTransaction(transactionId, cardId);
+    public Mono<Transaction> reverserTransaction( String cardId,Integer transactionId){
+        return  transactionRepository.reverseTransaction(cardId, transactionId);
     }
 }

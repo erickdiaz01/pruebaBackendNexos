@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class PurchaseTransactionUseCase {
 
-    private TransactionRepository transactionRepository;
+    private final TransactionRepository transactionRepository;
 
     public Mono<Transaction> doTransaction(String cardId,Integer price){
         return  transactionRepository.doPurchase(cardId,price);

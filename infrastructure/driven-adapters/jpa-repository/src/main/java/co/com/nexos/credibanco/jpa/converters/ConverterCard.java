@@ -17,7 +17,7 @@ public class ConverterCard {
                 Card.builder()
                 .cardId(cardData.getCardId())
                         .type(cardData.getTypeOfCard())
-                        .product(ConverterProduct.convertProductDataToProduct(cardData.getProductData()))
+                        .productId(cardData.getProductId())
                         .titularName(cardData.getTitularName())
                         .expirationDate(cardData.getExpirationDate())
                         .isActivated(cardData.getIsActivated())
@@ -38,7 +38,7 @@ public class ConverterCard {
         if(card!=null){
             cardData.setCardId(card.getCardId());
             cardData.setTypeOfCard(card.getType());
-            cardData.setProductData(ConverterProduct.convertProductToProductData(card.getProduct()));
+            cardData.setProductId(card.getProductId());
             cardData.setTitularName(card.getTitularName());
             cardData.setExpirationDate(card.getExpirationDate());
             cardData.setIsActivated(card.getIsActivated());

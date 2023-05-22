@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 public class CreateClientUseCase {
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     public Mono<Client> createClient(Client client){
         return clientRepository.createClient(client);

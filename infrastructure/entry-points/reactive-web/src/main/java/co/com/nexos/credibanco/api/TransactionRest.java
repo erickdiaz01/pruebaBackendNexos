@@ -1,6 +1,8 @@
 package co.com.nexos.credibanco.api;
 
 
+import co.com.nexos.credibanco.model.card.TransactionCard;
+import co.com.nexos.credibanco.model.transaction.AnulatedTransaction;
 import co.com.nexos.credibanco.model.transaction.Transaction;
 import co.com.nexos.credibanco.usecase.transaction.consulttransaction.ConsultTransactionUseCase;
 import co.com.nexos.credibanco.usecase.transaction.purchasetransaction.PurchaseTransactionUseCase;
@@ -22,15 +24,15 @@ public class TransactionRest {
     private final PurchaseTransactionUseCase purchaseTransactionUseCase;
     private final ReverseTransactionUseCase reverseTransactionUseCase;
     @PostMapping("/purchase")
-    public Mono<Transaction> purchaseTransaction(@RequestBody String cardId, @RequestBody Integer price){
-        return purchaseTransactionUseCase.doTransaction(cardId,price);
+    public Mono<Transaction> purchaseTransaction(@RequestBody TransactionCard card){
+        return purchaseTransactionUseCase.doTransaction(card.getCardId(), card.getPrice());
     }
     @GetMapping("/{transactionId}")
     public Mono<Transaction> consultTransaction(@PathVariable String transactionId){
         return consultTransactionUseCase.consultTransaction(transactionId);
     }
     @PostMapping("/anulation")
-    public Mono<Transaction> anulateTransaction(@RequestBody String transactionId,@RequestBody String cardId){
-        return reverseTransactionUseCase.reverserTransaction(transactionId,cardId);
+    public Mono<Transaction> anulateTransaction(@RequestBody AnulatedTransaction transaction){
+        return reverseTransactionUseCase.reverserTransaction(transaction.getCardId(),transaction.getTransactionId());
     }
 }

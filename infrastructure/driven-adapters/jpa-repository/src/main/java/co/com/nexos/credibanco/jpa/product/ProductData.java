@@ -18,19 +18,22 @@ import org.hibernate.annotations.OnDeleteAction;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-@Table(name = "Products")
+@Table(name = "products")
 public class ProductData {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id", nullable = false, length = 6)
-    private String productId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "products_SEQ")
+    @SequenceGenerator(name = "products_SEQ", sequenceName = "products_seq", allocationSize = 1)
+    @Column(name = "product_id", length = 6, nullable = false)
+    private Integer productId;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "document_client", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private ClientData client;
 
-    @OneToOne(mappedBy = "productData", cascade = CascadeType.ALL)
-    private CardData cardData;
+
+   @Column(name = "card_id")
+    private String cardId;
 }
