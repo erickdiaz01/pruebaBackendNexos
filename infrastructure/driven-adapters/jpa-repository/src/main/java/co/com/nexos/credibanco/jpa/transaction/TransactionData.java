@@ -3,6 +3,7 @@ package co.com.nexos.credibanco.jpa.transaction;
 import co.com.nexos.credibanco.jpa.card.CardData;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +34,8 @@ public class TransactionData {
     private LocalDate transactionDate;
     @Column(name = "is_valid", nullable = false)
     private Boolean isValid;
+
     @Column(name = "price", nullable = false)
+    @Min(0)
     private Integer price;
 }

@@ -21,4 +21,18 @@ public class Card  {
     private Boolean isBlocked;
     private Integer balance;
 
+    public void activateCard(){
+        if(!this.isActivated&&!this.isBlocked){
+            this.setIsActivated(true);
+        }
+
+    }
+      public void blockCard(){
+        if(this.isActivated&&!this.isBlocked){
+            this.setIsBlocked(true);
+            this.setIsActivated(false);
+        }
+}
+
+
 }

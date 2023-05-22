@@ -21,7 +21,8 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name = "Products")
 public class ProductData {
     @Id
-    @Column(name = "product_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id", nullable = false, length = 6)
     private String productId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

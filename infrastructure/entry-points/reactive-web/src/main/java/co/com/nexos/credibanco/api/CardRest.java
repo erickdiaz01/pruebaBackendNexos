@@ -24,7 +24,7 @@ public class CardRest {
     private final GenerateCardIdUseCase generateCardIdUseCase;
     private final RechargeBalanceUseCase rechargeBalanceUseCase;
 
-    @GetMapping("/{productId}")
+    @GetMapping("/{productId}/number")
     public Mono<Card> generateCard(@PathVariable String productId,@RequestBody String typeOfCard){
         return generateCardIdUseCase.generateCardId(productId,typeOfCard);
     }

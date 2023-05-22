@@ -20,4 +20,10 @@ public class Transaction {
     private LocalDate transactionDate;
     private Boolean isValid;
     private Integer price;
+
+    public void invalidTransaction(){
+        if(this.isValid){
+            this.setIsValid(false);
+        }
+    }
 }
