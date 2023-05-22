@@ -45,10 +45,8 @@ private final ClientDataRepository clientDataRepository;
     @Override
     public Mono<Product> createProduct(Product product) {
 
-        if(product.getProductId()!=null){
-            if(repository.findById(product.getProductId().toString()).isPresent()){
+        if(product.getProductId()!=null&&repository.findById(product.getProductId().toString()).isPresent()){
                 throw new IllegalArgumentException("Producto ya creado");
-            }
         }
         ClientData clientData = clientDataRepository.findById(product.getClient().getClientId()).orElseThrow(()->new ResourceAccessException("No existe el cliente en el sistema"));
         product.setClient(ConverterClient.convertClientDataToClient(clientData));

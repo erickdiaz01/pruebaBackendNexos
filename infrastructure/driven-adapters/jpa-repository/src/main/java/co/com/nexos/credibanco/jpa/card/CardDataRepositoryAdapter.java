@@ -28,7 +28,7 @@ public class CardDataRepositoryAdapter extends AdapterOperations<Card, CardData,
     private final ProductDataRepository productDataRepository;
 
     public CardDataRepositoryAdapter(CardDataRepository repository, ObjectMapper mapper,
-            ProductDataRepository productDataRepository, GlobalExceptionHandler exceptionHandler) {
+            ProductDataRepository productDataRepository) {
 
         super(repository, mapper, d -> mapper.mapBuilder(d, Card.CardBuilder.class).build());
         this.productDataRepository = productDataRepository;
@@ -82,16 +82,10 @@ public class CardDataRepositoryAdapter extends AdapterOperations<Card, CardData,
     @Override
     public Mono<Card> activeCard(String cardId) {
         return repository.findById(cardId).map(cardData -> {
-            System.out.println(cardData.getProductId());
             Card card = convertCardDataToCard(cardData);
-            System.out.println(card.getProductId());
             card.activateCard();
-            System.out.println(card.getProductId());
-            var hola2 = convertCardToCardData(card);
-            System.out.println(hola2.getProductId() + "hola");
-            var hola = repository.save(convertCardToCardData(card));
-            System.out.println(hola.getProductId());
-            return Mono.just(convertCardDataToCard(hola));
+            CardData newCard = repository.save(convertCardToCardData(card));
+            return Mono.just(convertCardDataToCard(newCard));
         }).orElseThrow(() -> new ResourceAccessException("No fue posible encontrar la tarjeta"));
     }
 
