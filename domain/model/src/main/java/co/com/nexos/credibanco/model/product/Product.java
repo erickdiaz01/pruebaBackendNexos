@@ -1,5 +1,4 @@
 package co.com.nexos.credibanco.model.product;
-import co.com.nexos.credibanco.model.card.Card;
 import co.com.nexos.credibanco.model.client.Client;
 import lombok.*;
 

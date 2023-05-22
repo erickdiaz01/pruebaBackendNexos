@@ -1,9 +1,7 @@
 package co.com.nexos.credibanco.jpa.converters;
 
 import co.com.nexos.credibanco.jpa.card.CardData;
-import co.com.nexos.credibanco.jpa.product.ProductData;
 import co.com.nexos.credibanco.model.card.Card;
-import co.com.nexos.credibanco.model.product.Product;
 
 import java.util.List;
 
@@ -13,19 +11,18 @@ public class ConverterCard {
     }
 
     public static Card convertCardDataToCard(CardData cardData) {
-        return cardData!= null ?
-                Card.builder()
+        return cardData != null ? Card.builder()
                 .cardId(cardData.getCardId())
-                        .type(cardData.getTypeOfCard())
-                        .productId(cardData.getProductId())
-                        .titularName(cardData.getTitularName())
-                        .expirationDate(cardData.getExpirationDate())
-                        .isActivated(cardData.getIsActivated())
-                        .isBlocked(cardData.getIsBlocked())
-                        .balance(cardData.getBalance())
+                .type(cardData.getTypeOfCard())
+                .productId(cardData.getProductId())
+                .titularName(cardData.getTitularName())
+                .expirationDate(cardData.getExpirationDate())
+                .isActivated(cardData.getIsActivated())
+                .isBlocked(cardData.getIsBlocked())
+                .balance(cardData.getBalance())
 
                 .build()
-               : Card.builder().build();
+                : Card.builder().build();
 
     }
 
@@ -35,7 +32,7 @@ public class ConverterCard {
 
     public static CardData convertCardToCardData(Card card) {
         CardData cardData = new CardData();
-        if(card!=null){
+        if (card != null) {
             cardData.setCardId(card.getCardId());
             cardData.setTypeOfCard(card.getType());
             cardData.setProductId(card.getProductId());

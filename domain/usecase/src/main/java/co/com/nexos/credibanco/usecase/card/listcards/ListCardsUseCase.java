@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 public class ListCardsUseCase {
     private final CardRepository cardRepository;
 
-    public Flux<Card> listCards(){
+    public Flux<Card> listCards() {
         return cardRepository.listCards();
     }
 }

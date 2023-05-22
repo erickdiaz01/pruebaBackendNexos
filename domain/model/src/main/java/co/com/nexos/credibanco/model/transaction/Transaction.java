@@ -1,10 +1,10 @@
 package co.com.nexos.credibanco.model.transaction;
+
 import co.com.nexos.credibanco.model.card.Card;
 import lombok.*;
 //import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,8 +18,8 @@ public class Transaction {
     private Boolean isValid;
     private Integer price;
 
-    public void invalidTransaction(){
-        if(this.isValid){
+    public void invalidTransaction() {
+        if (this.isValid) {
             this.setIsValid(false);
         }
     }

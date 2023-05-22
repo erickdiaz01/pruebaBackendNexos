@@ -31,38 +31,32 @@ public class CardRest {
     private final ListCardsUseCase listCardsUseCase;
 
     @GetMapping("/{productId}/number")
-    public Mono<Card> generateCard(@PathVariable Integer productId,@RequestBody TypeOfCard type){
-        return generateCardIdUseCase.generateCardId(productId,type);
+    public Mono<Card> generateCard(@PathVariable Integer productId, @RequestBody TypeOfCard type) {
+        return generateCardIdUseCase.generateCardId(productId, type);
     }
 
     @GetMapping
-    public Flux<Card> listCards(){
+    public Flux<Card> listCards() {
         return listCardsUseCase.listCards();
     }
 
     @PostMapping("/enroll")
-    public Mono<Card> activateCard(@RequestBody CardId cardId){
+    public Mono<Card> activateCard(@RequestBody CardId cardId) {
         return activateCardUseCase.activateCard(cardId.getCardId());
     }
 
     @DeleteMapping("/{cardId}")
-    public Mono<Card> blockCard(@PathVariable String cardId){
+    public Mono<Card> blockCard(@PathVariable String cardId) {
         return blockCardUseCase.blockCard(cardId);
     }
 
     @PostMapping("/balance")
-    public Mono<Card> rechargeBalance(@RequestBody BalanceCard card){
-    return rechargeBalanceUseCase.rechargeBalance(card.getCardId(),card.getBalance());
+    public Mono<Card> rechargeBalance(@RequestBody BalanceCard card) {
+        return rechargeBalanceUseCase.rechargeBalance(card.getCardId(), card.getBalance());
     }
 
-
     @GetMapping("/balance/{cardId}")
-    public Mono<Integer> consultBalance(@PathVariable String cardId){
+    public Mono<Integer> consultBalance(@PathVariable String cardId) {
         return consultBalanceUseCase.consultBalance(cardId);
     }
 }
-
-
-
-
-

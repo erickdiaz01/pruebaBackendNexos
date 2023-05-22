@@ -19,13 +19,14 @@ public class ClientRest {
 
     private final CreateClientUseCase createClientUseCase;
     private final ListClientsUseCase listClientsUseCase;
+
     @PostMapping
-    public Mono<Client> createClient(@RequestBody Client client){
-        return  createClientUseCase.createClient(client);
+    public Mono<Client> createClient(@RequestBody Client client) {
+        return createClientUseCase.createClient(client);
     }
 
     @GetMapping
-    public Flux<Client> listClients(){
+    public Flux<Client> listClients() {
         return listClientsUseCase.listClients();
     }
 

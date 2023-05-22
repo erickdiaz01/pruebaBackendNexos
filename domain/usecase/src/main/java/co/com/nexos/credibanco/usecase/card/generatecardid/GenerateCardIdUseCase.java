@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 public class GenerateCardIdUseCase {
     private final CardRepository cardRepository;
 
-    public Mono<Card> generateCardId(Integer productId, TypeOfCard typeOfCard){
-        return cardRepository.createCard(productId,typeOfCard);
+    public Mono<Card> generateCardId(Integer productId, TypeOfCard typeOfCard) {
+        return cardRepository.createCard(productId, typeOfCard);
     }
 }

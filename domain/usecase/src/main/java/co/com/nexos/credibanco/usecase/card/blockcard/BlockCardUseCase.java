@@ -9,8 +9,7 @@ import reactor.core.publisher.Mono;
 public class BlockCardUseCase {
     private final CardRepository cardRepository;
 
-    public Mono<Card> blockCard(String cardId){
+    public Mono<Card> blockCard(String cardId) {
         return cardRepository.blockCard(cardId);
     }
 }
-

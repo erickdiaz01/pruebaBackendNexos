@@ -1,10 +1,7 @@
 package co.com.nexos.credibanco.jpa.converters;
 
-import co.com.nexos.credibanco.jpa.card.CardData;
-import co.com.nexos.credibanco.jpa.client.ClientData;
 import co.com.nexos.credibanco.jpa.product.ProductData;
-import co.com.nexos.credibanco.model.card.Card;
-import co.com.nexos.credibanco.model.client.Client;
+
 import co.com.nexos.credibanco.model.product.Product;
 
 import java.util.List;
@@ -16,11 +13,10 @@ public class ConverterProduct {
 
     public static Product convertProductDataToProduct(ProductData productData) {
 
-
-        return productData!= null ? Product.builder()
+        return productData != null ? Product.builder()
                 .productId(productData.getProductId())
                 .client(ConverterClient.convertClientDataToClient(productData.getClient()))
-                 .cardId(productData.getCardId())
+                .cardId(productData.getCardId())
                 .build() : Product.builder().build();
 
     }
@@ -32,10 +28,9 @@ public class ConverterProduct {
     public static ProductData convertProductToProductData(Product product) {
         ProductData productData = new ProductData();
 
-
-        if(product!=null){
+        if (product != null) {
             productData.setProductId(product.getProductId());
-           productData.setCardId(product.getCardId());
+            productData.setCardId(product.getCardId());
             productData.setClient(ConverterClient.convertClientToClientData(product.getClient()));
         }
         return productData;

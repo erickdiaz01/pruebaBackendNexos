@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 public class ConsultTransactionUseCase {
     private final TransactionRepository transactionRepository;
 
-    public Mono<Transaction> consultTransaction(String transactionId){
-        return  transactionRepository.findTransactionById(transactionId);
+    public Mono<Transaction> consultTransaction(String transactionId) {
+        return transactionRepository.findTransactionById(transactionId);
     }
 }

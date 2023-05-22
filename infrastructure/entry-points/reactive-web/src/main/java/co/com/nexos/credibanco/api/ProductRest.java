@@ -21,12 +21,12 @@ public class ProductRest {
     private final ListProductsUseCase listProductsUseCase;
 
     @PostMapping
-    public Mono<Product> createProduct(@RequestBody Product product){
+    public Mono<Product> createProduct(@RequestBody Product product) {
         return createProductUseCase.createProduct(product);
     }
 
     @GetMapping
-    public Flux<Product> listProducts(){
+    public Flux<Product> listProducts() {
         return listProductsUseCase.listProducts();
     }
 }

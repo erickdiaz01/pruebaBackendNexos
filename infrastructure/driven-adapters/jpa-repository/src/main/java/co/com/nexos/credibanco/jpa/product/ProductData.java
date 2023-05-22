@@ -1,8 +1,7 @@
 package co.com.nexos.credibanco.jpa.product;
 
-import co.com.nexos.credibanco.jpa.card.CardData;
 import co.com.nexos.credibanco.jpa.client.ClientData;
-import co.com.nexos.credibanco.model.client.Client;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,7 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
 
 @Data
 @Entity
@@ -33,7 +31,6 @@ public class ProductData {
     @JsonIgnore
     private ClientData client;
 
-
-   @Column(name = "card_id")
+    @Column(name = "card_id")
     private String cardId;
 }

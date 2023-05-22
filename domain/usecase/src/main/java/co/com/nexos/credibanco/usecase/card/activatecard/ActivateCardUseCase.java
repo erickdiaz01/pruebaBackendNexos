@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 public class ActivateCardUseCase {
     private final CardRepository cardRepository;
 
-    public Mono<Card> activateCard(String cardId){
+    public Mono<Card> activateCard(String cardId) {
         return cardRepository.activeCard(cardId);
     }
 }

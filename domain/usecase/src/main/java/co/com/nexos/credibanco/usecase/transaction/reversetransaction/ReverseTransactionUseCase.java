@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 public class ReverseTransactionUseCase {
     private final TransactionRepository transactionRepository;
 
-    public Mono<Transaction> reverserTransaction( String cardId,Integer transactionId){
-        return  transactionRepository.reverseTransaction(cardId, transactionId);
+    public Mono<Transaction> reverserTransaction(String cardId, Integer transactionId) {
+        return transactionRepository.reverseTransaction(cardId, transactionId);
     }
 }

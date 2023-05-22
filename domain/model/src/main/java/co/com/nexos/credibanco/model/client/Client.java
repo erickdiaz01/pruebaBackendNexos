@@ -1,9 +1,8 @@
 package co.com.nexos.credibanco.model.client;
-import co.com.nexos.credibanco.model.product.Product;
-import lombok.*;
-//import lombok.NoArgsConstructor;
 
-import java.util.List;
+import lombok.*;
+
+
 
 @Getter
 @Setter

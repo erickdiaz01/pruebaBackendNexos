@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 public class CreateClientUseCase {
     private final ClientRepository clientRepository;
 
-    public Mono<Client> createClient(Client client){
+    public Mono<Client> createClient(Client client) {
         return clientRepository.createClient(client);
     }
 }
